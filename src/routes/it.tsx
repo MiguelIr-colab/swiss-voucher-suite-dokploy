@@ -1,9 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { LandingPage } from "@/components/site/LandingPage";
-import { localizedHead } from "@/lib/seo";
-import { locales } from "@/locales";
+import { HomePage } from "@/components/site/HomePage";
+import { buildHead } from "@/lib/seo";
+import { contentIT, ctaIT, footerIT, metaIT, navIT } from "@/content/it";
 
 export const Route = createFileRoute("/it")({
-  head: () => localizedHead("it", locales.it),
-  component: () => <LandingPage locale="it" />,
+  head: () => buildHead({ ...metaIT, path: "/it", htmlLang: "it-CH" }),
+  component: () => (
+    <HomePage lang="it" content={contentIT} nav={navIT} cta={ctaIT} footer={footerIT} />
+  ),
 });
