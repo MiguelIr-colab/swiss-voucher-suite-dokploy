@@ -3,7 +3,7 @@ import { LandingPage } from "@/components/site/LandingPage";
 import { localizedHead } from "@/lib/seo";
 import { locales } from "@/locales";
 
-export const Route = createFileRoute("/")({
-  head: () => localizedHead("de", locales.de),
-  component: () => <LandingPage locale="de" />,
+export const Route = createFileRoute("/it")({
+  head: () => localizedHead("it", locales.it),
+  component: () => <LandingPage locale="it" />,
 });
