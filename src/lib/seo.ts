@@ -2,12 +2,6 @@ import { localeMeta, type LocaleCode } from "@/locales";
 
 const SITE_URL = "https://voltaire.ch";
 
-export function buildHead(locale: LocaleCode) {
-  const t = require(`@/locales/${locale}`).default;
-  // (not used at runtime — see actual head() below)
-  return t;
-}
-
 export function localizedHead(locale: LocaleCode, dict: {
   meta: { title: string; description: string };
 }) {
