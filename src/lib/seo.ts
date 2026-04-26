@@ -1,41 +1,42 @@
-import { localeMeta, type LocaleCode } from "@/locales";
+const SITE = "https://voltaire.ch";
 
-const SITE_URL = "https://voltaire.ch";
+const ALT: { lang: string; path: string; hreflang: string }[] = [
+  { lang: "de", path: "/", hreflang: "de-CH" },
+  { lang: "fr", path: "/fr", hreflang: "fr-CH" },
+  { lang: "it", path: "/it", hreflang: "it-CH" },
+  { lang: "en", path: "/en", hreflang: "en-CH" },
+  { lang: "es", path: "/es", hreflang: "es" },
+];
 
-export function localizedHead(locale: LocaleCode, dict: {
-  meta: { title: string; description: string };
+export function buildHead(opts: {
+  title: string;
+  description: string;
+  path: string;
+  htmlLang: string;
 }) {
-  const current = localeMeta[locale];
-  const url = `${SITE_URL}${current.path === "/" ? "" : current.path}`;
-
-  const alternates = (Object.keys(localeMeta) as LocaleCode[]).map((l) => ({
-    rel: "alternate",
-    hrefLang: localeMeta[l].htmlLang,
-    href: `${SITE_URL}${localeMeta[l].path === "/" ? "" : localeMeta[l].path}`,
-  }));
-
+  const url = `${SITE}${opts.path === "/" ? "" : opts.path}`;
   return {
     meta: [
-      { title: dict.meta.title },
-      { name: "description", content: dict.meta.description },
-      { name: "language", content: current.htmlLang },
-      { property: "og:title", content: dict.meta.title },
-      { property: "og:description", content: dict.meta.description },
+      { title: opts.title },
+      { name: "description", content: opts.description },
+      { name: "language", content: opts.htmlLang },
+      { property: "og:title", content: opts.title },
+      { property: "og:description", content: opts.description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: url },
-      { property: "og:locale", content: current.htmlLang.replace("-", "_") },
+      { property: "og:locale", content: opts.htmlLang.replace("-", "_") },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: dict.meta.title },
-      { name: "twitter:description", content: dict.meta.description },
+      { name: "twitter:title", content: opts.title },
+      { name: "twitter:description", content: opts.description },
     ],
     links: [
       { rel: "canonical", href: url },
-      ...alternates,
-      {
+      ...ALT.map((a) => ({
         rel: "alternate",
-        hrefLang: "x-default",
-        href: `${SITE_URL}/`,
-      },
+        hrefLang: a.hreflang,
+        href: `${SITE}${a.path === "/" ? "" : a.path}`,
+      })),
+      { rel: "alternate", hrefLang: "x-default", href: `${SITE}/` },
     ],
     scripts: [
       {
@@ -46,13 +47,13 @@ export function localizedHead(locale: LocaleCode, dict: {
           name: "Voltaire",
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
-          description: dict.meta.description,
+          description: opts.description,
           url,
           offers: {
             "@type": "Offer",
             price: "0",
             priceCurrency: "CHF",
-            description: "1% fee per voucher sold. No setup, no monthly fee.",
+            description: "1% per voucher sold. No setup, no monthly fee.",
           },
           provider: {
             "@type": "Organization",
