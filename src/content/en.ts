@@ -23,7 +23,7 @@ export const contentEN: PageContent = {
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "1% commission. CHF 0 fixed. CHF 0 setup.",
+    title: "2% commission. CHF 0 fixed. CHF 0 setup.",
     subtitle: "per transaction",
     bullets: [
       "No monthly fees, no hidden costs",
@@ -50,5 +50,5 @@ export const ctaEN = "Request demo";
 export const footerEN = { tagline: "The voucher system for Swiss fine-dining restaurants.", rights: "All rights reserved." };
 export const metaEN = {
   title: "Voltaire — Voucher system for Swiss fine-dining restaurants",
-  description: "Sell vouchers directly on your own website. 1% commission. TWINT, Stripe & Wimag. No middlemen.",
+  description: "Sell vouchers directly on your own website. 2% commission. TWINT, Stripe & Wimag. No middlemen.",
 };
