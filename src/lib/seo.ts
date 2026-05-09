@@ -1,4 +1,4 @@
-const SITE = "https://voltaire.ch";
+const SITE = "https://swissicoupons.com";
 
 const ALT: { lang: string; path: string; hreflang: string }[] = [
   { lang: "de", path: "/", hreflang: "de-CH" },
