@@ -23,7 +23,7 @@ export const contentFR: PageContent = {
   },
   pricing: {
     eyebrow: "Tarifs",
-    title: "1% de commission. 0 CHF fixes. 0 CHF d'installation.",
+    title: "2% de commission. 0 CHF fixes. 0 CHF d'installation.",
     subtitle: "par transaction",
     bullets: [
       "Aucun abonnement mensuel, aucun frais caché",
@@ -50,5 +50,5 @@ export const ctaFR = "Demander une démo";
 export const footerFR = { tagline: "Le système de bons des restaurants gastronomiques suisses.", rights: "Tous droits réservés." };
 export const metaFR = {
   title: "Voltaire — Système de bons cadeaux pour restaurants suisses",
-  description: "Vendez des bons cadeaux directement sur votre site. 1% de commission. TWINT, Stripe & Wimag. Sans intermédiaires.",
+  description: "Vendez des bons cadeaux directement sur votre site. 2% de commission. TWINT, Stripe & Wimag. Sans intermédiaires.",
 };

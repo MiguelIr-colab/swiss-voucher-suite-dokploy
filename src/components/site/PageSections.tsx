@@ -156,7 +156,7 @@ export function Pricing({ c, trust }: { c: PageContent["pricing"]; trust: PageCo
         <div className="mx-auto mt-14 max-w-3xl rounded-3xl border border-border bg-background p-10 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.25)] md:p-14">
           <div className="grid gap-10 md:grid-cols-[auto_1fr] md:items-center md:gap-14">
             <div className="text-center md:text-left">
-              <div className="text-7xl font-bold tracking-tight text-foreground md:text-8xl">1%</div>
+              <div className="text-7xl font-bold tracking-tight text-foreground md:text-8xl">2%</div>
               <div className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
                 {c.subtitle}
               </div>
