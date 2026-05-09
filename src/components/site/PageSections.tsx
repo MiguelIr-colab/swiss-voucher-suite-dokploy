@@ -192,12 +192,25 @@ export function Pricing({ c, trust }: { c: PageContent["pricing"]; trust: PageCo
   );
 }
 
+const RECAPTCHA_SITE_KEY = "6LeT2swsAAAAACHoYTebfR_Yp1xaF5ZfadAPBruF";
+const API_ENDPOINT = "https://apibots.aiassistant-bots.ch/api/contact";
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      getResponse: (id?: number) => string;
+      reset: (id?: number) => void;
+    };
+  }
+}
+
 export function ContactForm({ c }: { c: PageContent["contact"] }) {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
     const data = Object.fromEntries(fd.entries()) as Record<string, string>;
@@ -206,16 +219,42 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
     if (!data.restaurant?.trim()) errs.restaurant = c.errors.required;
     if (!/^\S+@\S+\.\S+$/.test(data.email || "")) errs.email = c.errors.email;
     if (!/^https?:\/\/\S+\.\S+/.test(data.website || "")) errs.website = c.errors.url;
+
+    const recaptchaToken = window.grecaptcha?.getResponse() ?? "";
+    if (!recaptchaToken) errs.recaptcha = c.errors.required;
+
     if (Object.keys(errs).length) {
       setErrors(errs);
       return;
     }
     setErrors({});
+    setServerError(null);
     setPending(true);
-    setTimeout(() => {
-      setPending(false);
+    try {
+      const res = await fetch(API_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name.trim(),
+          restaurant: data.restaurant.trim(),
+          website: data.website.trim(),
+          email: data.email.trim(),
+          recaptchaToken,
+          source: "swissicoupons.com",
+        }),
+      });
+      if (!res.ok) {
+        const body = await res.text().catch(() => "");
+        throw new Error(body || `Request failed (${res.status})`);
+      }
       setSubmitted(true);
-    }, 600);
+      window.grecaptcha?.reset();
+    } catch (err) {
+      setServerError(err instanceof Error ? err.message : "Request failed");
+      window.grecaptcha?.reset();
+    } finally {
+      setPending(false);
+    }
   };
 
   return (
