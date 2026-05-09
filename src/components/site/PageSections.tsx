@@ -286,8 +286,17 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
                   <Field name="restaurant" label={c.fields.restaurant} error={errors.restaurant} />
                   <Field name="website" type="url" placeholder="https://" label={c.fields.website} error={errors.website} />
                   <Field name="email" type="email" label={c.fields.email} error={errors.email} />
+                  <div>
+                    <div className="g-recaptcha" data-sitekey={RECAPTCHA_SITE_KEY} />
+                    {errors.recaptcha && (
+                      <p className="mt-1.5 text-xs text-destructive">{errors.recaptcha}</p>
+                    )}
+                  </div>
+                  {serverError && (
+                    <p className="text-xs text-destructive">{serverError}</p>
+                  )}
                   <button type="submit" disabled={pending} className="btn-primary w-full disabled:opacity-60">
-                    {c.submit}
+                    {pending ? "…" : c.submit}
                   </button>
                 </form>
               )}
