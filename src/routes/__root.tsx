@@ -40,6 +40,11 @@ export const Route = createRootRoute({
       },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      { rel: "preconnect", href: "https://www.google.com" },
+      { rel: "preconnect", href: "https://www.gstatic.com", crossOrigin: "anonymous" },
+    ],
+    scripts: [
+      { src: "https://www.google.com/recaptcha/api.js", async: true, defer: true },
     ],
   }),
   shellComponent: RootShell,
