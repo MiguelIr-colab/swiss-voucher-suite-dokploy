@@ -193,7 +193,7 @@ export function Pricing({ c, trust }: { c: PageContent["pricing"]; trust: PageCo
 }
 
 const RECAPTCHA_SITE_KEY = "6LeT2swsAAAAACHoYTebfR_Yp1xaF5ZfadAPBruF";
-const API_ENDPOINT = "https://apibots.aiassistant-bots.ch/api/contact";
+const API_ENDPOINT = "https://apibots.aiassistant-bots.ch/contact";
 
 declare global {
   interface Window {
