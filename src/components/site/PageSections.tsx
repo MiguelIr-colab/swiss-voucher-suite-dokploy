@@ -198,8 +198,8 @@ const API_ENDPOINT = "https://apibots.aiassistant-bots.ch/api/contact";
 declare global {
   interface Window {
     grecaptcha?: {
-      getResponse: (id?: number) => string;
-      reset: (id?: number) => void;
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
     };
   }
 }
@@ -220,9 +220,6 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
     if (!/^\S+@\S+\.\S+$/.test(data.email || "")) errs.email = c.errors.email;
     if (!/^https?:\/\/\S+\.\S+/.test(data.website || "")) errs.website = c.errors.url;
 
-    const recaptchaToken = window.grecaptcha?.getResponse() ?? "";
-    if (!recaptchaToken) errs.recaptcha = c.errors.required;
-
     if (Object.keys(errs).length) {
       setErrors(errs);
       return;
@@ -231,6 +228,11 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
     setServerError(null);
     setPending(true);
     try {
+      let recaptchaToken = "";
+      if (window.grecaptcha) {
+        await new Promise<void>((resolve) => window.grecaptcha!.ready(resolve));
+        recaptchaToken = await window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: "contact" });
+      }
       const res = await fetch(API_ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -248,10 +250,8 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
         throw new Error(body || `Request failed (${res.status})`);
       }
       setSubmitted(true);
-      window.grecaptcha?.reset();
     } catch (err) {
       setServerError(err instanceof Error ? err.message : "Request failed");
-      window.grecaptcha?.reset();
     } finally {
       setPending(false);
     }
@@ -286,12 +286,6 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
                   <Field name="restaurant" label={c.fields.restaurant} error={errors.restaurant} />
                   <Field name="website" type="url" placeholder="https://" label={c.fields.website} error={errors.website} />
                   <Field name="email" type="email" label={c.fields.email} error={errors.email} />
-                  <div>
-                    <div className="g-recaptcha" data-sitekey={RECAPTCHA_SITE_KEY} />
-                    {errors.recaptcha && (
-                      <p className="mt-1.5 text-xs text-destructive">{errors.recaptcha}</p>
-                    )}
-                  </div>
                   {serverError && (
                     <p className="text-xs text-destructive">{serverError}</p>
                   )}
