@@ -235,12 +235,12 @@ export function ContactForm({ c }: { c: PageContent["contact"] }) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: data.name.trim(),
-          restaurant: data.restaurant.trim(),
-          website: data.website.trim(),
+          nombre: data.name.trim(),
           email: data.email.trim(),
+          tipoNegocio: data.restaurant.trim(),
+          mensaje: `Web: ${data.website.trim()}`,
           recaptchaToken,
-          source: "swissicoupons.com",
+          honeypot: "",
         }),
       });
       if (!res.ok) {
