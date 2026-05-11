@@ -1,6 +1,9 @@
 import { useState, type FormEvent } from "react";
-import { ArrowRight, Check, Code2, CreditCard, Palette, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Check, Code2, CreditCard, Palette, CheckCircle2, ExternalLink } from "lucide-react";
 import voucherImg from "@/assets/voucher-hero.png";
+import kleShot from "@/assets/restaurants/kle.png";
+import darShot from "@/assets/restaurants/dar.png";
+import okoShot from "@/assets/restaurants/oko.png";
 
 export interface PageContent {
   hero: {
@@ -81,20 +84,41 @@ export function Hero({ c }: { c: PageContent["hero"] }) {
 }
 
 export function SocialProof({ label }: { label: string }) {
-  const logos = ["KLE", "DAR", "OKO"];
+  const cards = [
+    { name: "KLE", city: "Zürich", href: "https://www.restaurantkle.com/de", img: kleShot },
+    { name: "DAR", city: "Zürich", href: "https://de.restaurantdar.com/", img: darShot },
+    { name: "OKO", city: "Zürich", href: "https://oko.bar/", img: okoShot },
+  ];
   return (
     <section className="border-y border-border/60 bg-background">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-20">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground">
           {label}
         </p>
-        <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-16 gap-y-6 sm:gap-x-24">
-          {logos.map((n) => (
-            <li
-              key={n}
-              className="text-3xl font-bold tracking-[0.3em] text-foreground/30 transition hover:text-foreground sm:text-4xl"
-            >
-              {n}
+        <ul className="mt-10 grid gap-5 sm:grid-cols-3">
+          {cards.map((r) => (
+            <li key={r.name}>
+              <a
+                href={r.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-secondary/30 transition-all duration-300 hover:-translate-y-1 hover:bg-background hover:shadow-[0_25px_60px_-25px_rgba(0,0,0,0.2)]"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-muted">
+                  <img
+                    src={r.img}
+                    alt={r.name}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="flex items-center justify-between px-5 py-4">
+                  <div>
+                    <p className="text-base font-bold tracking-wider text-foreground">{r.name}</p>
+                    <p className="text-xs text-muted-foreground">{r.city}</p>
+                  </div>
+                  <ExternalLink size={14} className="text-muted-foreground/50 transition group-hover:text-accent" />
+                </div>
+              </a>
             </li>
           ))}
         </ul>
