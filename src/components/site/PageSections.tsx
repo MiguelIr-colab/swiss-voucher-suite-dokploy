@@ -47,7 +47,7 @@ export function Hero({ c }: { c: PageContent["hero"] }) {
       <div className="absolute inset-0 -z-10 surface-soft" />
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 pt-20 pb-24 md:grid-cols-[1.15fr_1fr] md:gap-16 md:pt-32 md:pb-32">
         <div>
-          <span className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground">
+          <span className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground max-w-full break-words">
             {c.eyebrow}
           </span>
           <h1 className="mt-6 text-5xl leading-[1.02] font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
@@ -64,7 +64,7 @@ export function Hero({ c }: { c: PageContent["hero"] }) {
             </a>
             <a href="#solution" className="btn-secondary">{c.ctaSecondary}</a>
           </div>
-          <p className="mt-6 text-xs text-muted-foreground">{c.note}</p>
+          <p className="mt-6 text-xs text-muted-foreground break-words hyphens-auto">{c.note}</p>
         </div>
         <div className="relative">
           <div className="absolute -inset-8 -z-10 rounded-[3rem] bg-gradient-to-br from-accent/10 via-transparent to-transparent blur-3xl" />
