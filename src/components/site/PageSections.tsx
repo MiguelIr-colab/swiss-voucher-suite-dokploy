@@ -50,7 +50,7 @@ export function Hero({ c }: { c: PageContent["hero"] }) {
           <span className="inline-flex items-center rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-muted-foreground max-w-full break-words">
             {c.eyebrow}
           </span>
-          <h1 className="mt-6 text-5xl leading-[1.02] font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
+          <h1 className="mt-6 text-4xl leading-[1.05] font-bold tracking-tight text-foreground break-words sm:text-5xl md:text-6xl lg:text-7xl">
             {c.titleA}
             <span className="block text-muted-foreground">{c.titleB}</span>
           </h1>
