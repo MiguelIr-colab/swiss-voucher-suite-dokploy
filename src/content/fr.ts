@@ -23,8 +23,8 @@ export const contentFR: PageContent = {
   },
   pricing: {
     eyebrow: "Tarifs",
-    title: "2% de commission. 0 CHF fixes. 0 CHF d'installation.",
-    subtitle: "par transaction",
+    title: "2% + frais de plateforme. 0 CHF fixes. 0 CHF d'installation.",
+    subtitle: "par transaction + frais de plateforme",
     bullets: [
       "Aucun abonnement mensuel, aucun frais caché",
       "Nous gagnons uniquement quand vous vendez",
@@ -33,7 +33,7 @@ export const contentFR: PageContent = {
     ],
     cta: "Commencer maintenant",
   },
-  trust: { title: "Intégration native avec", items: ["TWINT", "Stripe", "Wimag"] },
+  trust: { title: "Intégration native avec", items: ["TWINT", "Stripe", "Wimag", "Worldline"] },
   contact: {
     eyebrow: "Contact",
     title: "Parlez à notre équipe.",
@@ -50,5 +50,5 @@ export const ctaFR = "Demander une démo";
 export const footerFR = { tagline: "Le système de bons des restaurants gastronomiques suisses.", rights: "Tous droits réservés." };
 export const metaFR = {
   title: "Voltaire — Système de bons cadeaux pour restaurants suisses",
-  description: "Vendez des bons cadeaux directement sur votre site. 2% de commission. TWINT, Stripe & Wimag. Sans intermédiaires.",
+  description: "Vendez des bons cadeaux directement sur votre site. 2% + frais de plateforme. TWINT, Stripe & Wimag. Sans intermédiaires.",
 };

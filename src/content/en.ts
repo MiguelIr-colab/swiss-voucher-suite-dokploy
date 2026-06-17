@@ -23,8 +23,8 @@ export const contentEN: PageContent = {
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "2% commission. CHF 0 fixed. CHF 0 setup.",
-    subtitle: "per transaction",
+    title: "2% + payment platform fee. CHF 0 fixed. CHF 0 setup.",
+    subtitle: "per transaction + platform fee",
     bullets: [
       "No monthly fees, no hidden costs",
       "We only earn when you sell",
@@ -33,7 +33,7 @@ export const contentEN: PageContent = {
     ],
     cta: "Get started",
   },
-  trust: { title: "Native integration with", items: ["TWINT", "Stripe", "Wimag"] },
+  trust: { title: "Native integration with", items: ["TWINT", "Stripe", "Wimag", "Worldline"] },
   contact: {
     eyebrow: "Contact",
     title: "Talk to our team.",
@@ -50,5 +50,5 @@ export const ctaEN = "Request demo";
 export const footerEN = { tagline: "The voucher system for Swiss fine-dining restaurants.", rights: "All rights reserved." };
 export const metaEN = {
   title: "Voltaire — Voucher system for Swiss fine-dining restaurants",
-  description: "Sell vouchers directly on your own website. 2% commission. TWINT, Stripe & Wimag. No middlemen.",
+  description: "Sell vouchers directly on your own website. 2% + payment platform fee. TWINT, Stripe & Wimag. No middlemen.",
 };

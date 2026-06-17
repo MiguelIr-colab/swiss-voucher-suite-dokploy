@@ -23,8 +23,8 @@ export const contentES: PageContent = {
   },
   pricing: {
     eyebrow: "Precio",
-    title: "2% de comisión. 0€ fijos. 0€ instalación.",
-    subtitle: "por transacción",
+    title: "2% + comisión de plataforma de pago. 0€ fijos. 0€ instalación.",
+    subtitle: "por transacción + comisión de plataforma",
     bullets: [
       "Sin cuotas mensuales ni costes ocultos",
       "Solo ganamos cuando tú vendes",
@@ -33,7 +33,7 @@ export const contentES: PageContent = {
     ],
     cta: "Empezar ahora",
   },
-  trust: { title: "Integración nativa con", items: ["TWINT", "Stripe", "Wimag"] },
+  trust: { title: "Integración nativa con", items: ["TWINT", "Stripe", "Wimag", "Worldline"] },
   contact: {
     eyebrow: "Contacto",
     title: "Habla con nuestro equipo.",
@@ -50,5 +50,5 @@ export const ctaES = "Solicitar demo";
 export const footerES = { tagline: "El sistema de vouchers para restaurantes de alta gastronomía suizos.", rights: "Todos los derechos reservados." };
 export const metaES = {
   title: "Voltaire — Sistema de vouchers para restaurantes suizos",
-  description: "Vende vouchers directamente en tu web. 2% de comisión. TWINT, Stripe & Wimag. Sin intermediarios.",
+  description: "Vende vouchers directamente en tu web. 2% + comisión de plataforma de pago. TWINT, Stripe & Wimag. Sin intermediarios.",
 };
