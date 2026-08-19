@@ -5,7 +5,7 @@ export const contentFR: PageContent = {
     eyebrow: "Système de bons cadeaux pour la haute gastronomie",
     titleA: "Vendez des bons sur votre propre site.",
     titleB: "Sans intermédiaires.",
-    subtitle: "Voltaire s'intègre nativement à votre site. Pas de marketplace, pas de commissions tierces. Juste vous et vos clients.",
+    subtitle: "Swissicoupons s'intègre nativement à votre site. Pas de marketplace, pas de commissions tierces. Juste vous et vos clients.",
     ctaPrimary: "Demander une démo",
     ctaSecondary: "En savoir plus",
     note: "Aucun frais d'installation · En ligne en 7 jours · TWINT, Stripe & Wimag",
@@ -49,6 +49,6 @@ export const navFR = { solution: "Plateforme", pricing: "Tarifs", contact: "Cont
 export const ctaFR = "Demander une démo";
 export const footerFR = { tagline: "Le système de bons des restaurants gastronomiques suisses.", rights: "Tous droits réservés." };
 export const metaFR = {
-  title: "Voltaire — Système de bons cadeaux pour restaurants suisses",
+  title: "Swissicoupons — Système de bons cadeaux pour restaurants suisses",
   description: "Vendez des bons cadeaux directement sur votre site. 2% + frais de plateforme. TWINT, Stripe & Wimag. Sans intermédiaires.",
 };

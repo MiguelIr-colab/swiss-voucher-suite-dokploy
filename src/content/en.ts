@@ -5,7 +5,7 @@ export const contentEN: PageContent = {
     eyebrow: "Voucher system for fine-dining restaurants",
     titleA: "Sell vouchers on your own website.",
     titleB: "No middlemen.",
-    subtitle: "Voltaire integrates natively into your website. No marketplace, no third-party fees. Just you and your guests.",
+    subtitle: "Swissicoupons integrates natively into your website. No marketplace, no third-party fees. Just you and your guests.",
     ctaPrimary: "Request a demo",
     ctaSecondary: "Learn more",
     note: "No setup fees · Live in 7 days · TWINT, Stripe & Wimag",
@@ -49,6 +49,6 @@ export const navEN = { solution: "Platform", pricing: "Pricing", contact: "Conta
 export const ctaEN = "Request demo";
 export const footerEN = { tagline: "The voucher system for Swiss fine-dining restaurants.", rights: "All rights reserved." };
 export const metaEN = {
-  title: "Voltaire — Voucher system for Swiss fine-dining restaurants",
+  title: "Swissicoupons — Voucher system for Swiss fine-dining restaurants",
   description: "Sell vouchers directly on your own website. 2% + payment platform fee. TWINT, Stripe & Wimag. No middlemen.",
 };

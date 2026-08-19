@@ -44,7 +44,7 @@ export function buildHead(opts: {
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "SoftwareApplication",
-          name: "Voltaire",
+          name: "Swissicoupons",
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
           description: opts.description,
@@ -57,7 +57,7 @@ export function buildHead(opts: {
           },
           provider: {
             "@type": "Organization",
-            name: "Voltaire SA",
+            name: "Swissicoupons",
             address: {
               "@type": "PostalAddress",
               addressCountry: "CH",

@@ -34,7 +34,7 @@ export function Layout({
             to={LANGS.find((l) => l.code === current)!.path}
             className="text-lg font-bold tracking-tight text-foreground"
           >
-            Voltaire<span className="text-accent">.</span>
+            Swissicoupons<span className="text-accent">.</span>
           </Link>
 
           <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
@@ -76,7 +76,7 @@ export function Layout({
           <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
             <div className="max-w-sm">
               <p className="text-lg font-bold text-foreground">
-                Voltaire<span className="text-accent">.</span>
+                Swissicoupons<span className="text-accent">.</span>
               </p>
               <p className="mt-2 text-sm text-muted-foreground">{footerTagline}</p>
             </div>
@@ -99,8 +99,25 @@ export function Layout({
               ))}
             </ul>
           </div>
-          <div className="mt-10 flex flex-col gap-2 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>© {new Date().getFullYear()} Voltaire SA · Zürich · {footerRights}</p>
+          <div className="mt-8 flex flex-wrap gap-x-4 gap-y-2 text-xs text-muted-foreground">
+            <Link to="/impressum" className="underline transition hover:text-foreground">
+              Impressum
+            </Link>
+            <Link to="/datenschutz" className="underline transition hover:text-foreground">
+              Datenschutzerklärung
+            </Link>
+            <a
+              href="https://admin.swissicoupons.com/legal/agb/1.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline transition hover:text-foreground"
+            >
+              AGB
+            </a>
+          </div>
+
+          <div className="mt-6 flex flex-col gap-2 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Pedro Miguel Irurzun · Swissicoupons · Zürich · {footerRights}</p>
             <p>Made in Switzerland 🇨🇭</p>
           </div>
         </div>

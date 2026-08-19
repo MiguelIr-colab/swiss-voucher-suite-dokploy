@@ -10,14 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ItRouteImport } from './routes/it'
+import { Route as ImpressumRouteImport } from './routes/impressum'
 import { Route as FrRouteImport } from './routes/fr'
 import { Route as EsRouteImport } from './routes/es'
 import { Route as EnRouteImport } from './routes/en'
+import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as IndexRouteImport } from './routes/index'
 
 const ItRoute = ItRouteImport.update({
   id: '/it',
   path: '/it',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpressumRoute = ImpressumRouteImport.update({
+  id: '/impressum',
+  path: '/impressum',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FrRoute = FrRouteImport.update({
@@ -35,6 +42,11 @@ const EnRoute = EnRouteImport.update({
   path: '/en',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DatenschutzRoute = DatenschutzRouteImport.update({
+  id: '/datenschutz',
+  path: '/datenschutz',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,39 +55,55 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/datenschutz': typeof DatenschutzRoute
   '/en': typeof EnRoute
   '/es': typeof EsRoute
   '/fr': typeof FrRoute
+  '/impressum': typeof ImpressumRoute
   '/it': typeof ItRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/datenschutz': typeof DatenschutzRoute
   '/en': typeof EnRoute
   '/es': typeof EsRoute
   '/fr': typeof FrRoute
+  '/impressum': typeof ImpressumRoute
   '/it': typeof ItRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/datenschutz': typeof DatenschutzRoute
   '/en': typeof EnRoute
   '/es': typeof EsRoute
   '/fr': typeof FrRoute
+  '/impressum': typeof ImpressumRoute
   '/it': typeof ItRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/en' | '/es' | '/fr' | '/it'
+  fullPaths: '/' | '/datenschutz' | '/en' | '/es' | '/fr' | '/impressum' | '/it'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/en' | '/es' | '/fr' | '/it'
-  id: '__root__' | '/' | '/en' | '/es' | '/fr' | '/it'
+  to: '/' | '/datenschutz' | '/en' | '/es' | '/fr' | '/impressum' | '/it'
+  id:
+    | '__root__'
+    | '/'
+    | '/datenschutz'
+    | '/en'
+    | '/es'
+    | '/fr'
+    | '/impressum'
+    | '/it'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DatenschutzRoute: typeof DatenschutzRoute
   EnRoute: typeof EnRoute
   EsRoute: typeof EsRoute
   FrRoute: typeof FrRoute
+  ImpressumRoute: typeof ImpressumRoute
   ItRoute: typeof ItRoute
 }
 
@@ -86,6 +114,13 @@ declare module '@tanstack/react-router' {
       path: '/it'
       fullPath: '/it'
       preLoaderRoute: typeof ItRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impressum': {
+      id: '/impressum'
+      path: '/impressum'
+      fullPath: '/impressum'
+      preLoaderRoute: typeof ImpressumRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fr': {
@@ -109,6 +144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/datenschutz': {
+      id: '/datenschutz'
+      path: '/datenschutz'
+      fullPath: '/datenschutz'
+      preLoaderRoute: typeof DatenschutzRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -121,9 +163,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DatenschutzRoute: DatenschutzRoute,
   EnRoute: EnRoute,
   EsRoute: EsRoute,
   FrRoute: FrRoute,
+  ImpressumRoute: ImpressumRoute,
   ItRoute: ItRoute,
 }
 export const routeTree = rootRouteImport
